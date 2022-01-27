@@ -53,20 +53,31 @@ table {
 *::after{
     box-sizing: border-box;
 }
-.heading{
-    display: block;
-    background-color: rgb(55,126,128);
-    height: 80px;
-    box-sizing: border-box;
-    text-align: center;
-    padding-top: 30px;
+img{
+    max-width: 100%;
+    height: auto;
 }
-.text{
-    font-size: 24px;
-    font-weight: 900;
-    color: rgb(247,253,89);
+body{
+    background: oldlace;
+    color: #777;
+    font-family: sans-serif;
+    line-height: 1.15;
 }
-.list{
-    display: flex;
-    flex-direction: row;
+hr:last-child{
+    margin-right: 60%;
+}
+hr.image{
+    padding-bottom: 50%;
+}
+.page{
+    padding: 0 2rem 2rem 2rem;
+}
+
+.archive{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+    );
+    grid-gap: 1em;
 }
