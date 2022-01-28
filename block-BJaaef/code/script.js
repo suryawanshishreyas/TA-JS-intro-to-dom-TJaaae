@@ -335,20 +335,44 @@ got = {
         <a>
         </li>
  */
-let allpeople=got.houses;
-let rootElement=document.querySelector('ul');
-    allpeople.forEach(char=>{
-      let li=document.createElement('li');
-      let img=document.createElement('img');
-      img.src=char.people.image;
-      img.alt=" ";
-      let h1=document.createElement('h1');
-      h1.innerText=char.people.name;
-      let h2=document.createElement('h2');
-      h2.innerText=char.people.description;
-      let a=document.createElement('a');
-      a.innerText=char.people.wikiLink;
-      li.append(img,h1,h2,a);
-      rootElement.append(li);
+let allpeople=got.houses.reduce((acc,cv)=>{
+    acc=acc.concat(cv.people);
+    return acc;
+},[]);
+
+// let rootElement=document.querySelector('ul');
+//     allpeople.map(char=>{
+//       let li=document.createElement('li');
+//       let img=document.createElement('img');
+//       img.src=char.image;
+//       img.alt=" ";
+//       let h1=document.createElement('h1');
+//       h1.innerText=char.name;
+//       let h2=document.createElement('h2');
+//       h2.innerText=char.description;
+//       let a=document.createElement('a');
+//       a.innerText=char.wikiLink;
+//       li.append(img,h1,h2,a);
+//       rootElement.append(li);
       
-  });
+//   });
+let parentElm =document.querySelector('.mainbox');
+
+let cardsHTML= allpeople.map((person)=>{
+    return `<li class="card">
+            <div class="info">
+                <img
+                    src=${person.image}
+                    alt=${person.name}
+                />
+                <h2>${person.name}
+            </div>
+            <p>
+                ${person.description}
+            </p>
+            <a href=${person.wikiLink}>Learn More!</a>
+        </li>`;
+});
+parentElm.innerHTML= cardsHTML.join(" ");
+console.log(allpeople);
+console.log(cardsHTML);
